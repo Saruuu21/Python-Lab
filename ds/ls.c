@@ -1,0 +1,87 @@
+#include<stdio.h>
+#include<stdlib.h>
+int count=0;
+ struct node
+ {
+ int data;
+ struct node* next;
+ }
+*new,*head=NULL,*h,*l,*sl;
+void create()
+{
+new=(struct node*)malloc(sizeof(struct node));
+printf("Enter the data to the node ");
+scanf("%d",&new->data);
+new->next=NULL;
+}
+void insertion()
+{
+ create();
+ if(head==NULL)
+ {
+ head=new;
+ }
+ else
+ {
+ h=head;
+ while(h->next!=NULL)
+ {
+ h=h->next;
+ }
+ h->next=new;
+ }
+ count++;
+}
+void display()
+{
+ if(head==NULL)
+ printf("List is empty");
+ else
+ {
+ h=head;
+ printf("Linked list elements are ");
+ while(h!=NULL)
+ {
+ printf("%d -> ",h->data);
+ h=h->next;
+ }
+ }
+}
+void deletion()
+{
+ if(head==NULL)
+ printf("List is empty");
+ else
+ {
+ h=head;
+ head=head->next;
+ printf("Deleted element is %d ",l->data);
+ free(h);
+ count--;
+ }
+}
+
+void main()
+{
+ int ch=0;
+ do
+ {
+ printf("\nChoose option \n");
+ printf("1)Insertion \n2)Deletion \n3)Display \n4)Exit\n");
+ scanf("%d",&ch);
+ switch(ch)
+ {
+ case 1:insertion();
+ break;
+ case 2:deletion();
+ break;
+ case 3:display();
+ break;
+ case 4:exit(0);
+ break;
+ default:
+ printf("Wrong Choice");
+ }
+ }
+while(ch!=4);
+}
